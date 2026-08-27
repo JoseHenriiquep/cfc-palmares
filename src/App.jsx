@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 const whatsappNumber = '5581992799266'
 
@@ -104,21 +104,25 @@ const services = [
     code: 'A',
     title: 'Categoria A',
     text: 'Liberdade sobre duas rodas, com preparação segura e objetiva.',
+    routeId: 'primeira',
   },
   {
     code: 'B',
     title: 'Categoria B',
     text: 'Mais autonomia para dirigir carro com responsabilidade.',
+    routeId: 'primeira',
   },
   {
     code: 'AB',
     title: 'Categorias A + B',
     text: 'Uma formação completa para ampliar suas possibilidades.',
+    routeId: 'primeira',
   },
   {
     code: 'D',
     title: 'Classificação D',
     text: 'O próximo passo para quem quer avançar profissionalmente.',
+    routeId: 'classificacao',
   },
 ]
 
@@ -139,19 +143,7 @@ const expectations = [
 
 function App() {
   const [selectedRoute, setSelectedRoute] = useState('primeira')
-  const [heroPointer, setHeroPointer] = useState({ x: 50, y: 50 })
-  const heroRef = useRef(null)
   const activeRoute = routeOptions.find((route) => route.id === selectedRoute) ?? routeOptions[0]
-
-  const handleHeroPointerMove = (event) => {
-    if (!heroRef.current || event.pointerType === 'touch') return
-
-    const bounds = heroRef.current.getBoundingClientRect()
-    setHeroPointer({
-      x: ((event.clientX - bounds.left) / bounds.width) * 100,
-      y: ((event.clientY - bounds.top) / bounds.height) * 100,
-    })
-  }
 
   const scrollToRoute = () => {
     document.getElementById('rota')?.scrollIntoView({ behavior: 'smooth' })
@@ -159,49 +151,26 @@ function App() {
 
   return (
     <div className="site-shell">
-      <div className="top-strip">
-        <div className="container top-strip-inner">
-          <span className="availability">
-            <span className="availability-dot" /> Atendimento em Palmares-PE
-          </span>
-          <a href={whatsappLink()} target="_blank" rel="noreferrer">
-            (81) 99279-9266 <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-
-      <header className="site-header container">
-        <a className="brand" href="#inicio" aria-label="CFC Palmares - início">
-          <img src="/logo-sem-nome-sem-fundo.png" alt="" />
-          <span>
-            CFC <strong>PALMARES</strong>
-          </span>
-        </a>
-        <nav className="main-nav" aria-label="Navegação principal">
-          <a href="#beneficios">Benefícios</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#rota">Sua rota</a>
-        </nav>
-        <a className="header-cta" href={whatsappLink()} target="_blank" rel="noreferrer">
-          Falar com a equipe <span aria-hidden="true">↗</span>
-        </a>
-      </header>
-
       <main>
-        <section
-          ref={heroRef}
-          className="hero"
-          id="inicio"
-          onPointerMove={handleHeroPointerMove}
-          style={{ '--pointer-x': `${heroPointer.x}%`, '--pointer-y': `${heroPointer.y}%` }}
-        >
-          <div className="hero-glow" />
+        <section className="hero" id="inicio">
           <div className="hero-grid-lines" />
+          <div className="navigation-bar">
+            <header className="site-header container">
+              <a className="brand" href="#inicio" aria-label="CFC Palmares - início">
+                <img src="/logo-sem-nome-sem-fundo.png" alt="" />
+                <span>
+                  CFC <strong>PALMARES</strong>
+                </span>
+              </a>
+              <nav className="main-nav" aria-label="Navegação principal">
+                <a href="#beneficios">Benefícios</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#rota">Sua rota</a>
+              </nav>
+            </header>
+          </div>
           <div className="container hero-layout">
             <div className="hero-copy">
-              <p className="eyebrow light-eyebrow">
-                <span className="eyebrow-mark">✦</span> CFC PALMARES · AUTO ESCOLA
-              </p>
               <h1>
                 Você na <span>direção</span> certa.
               </h1>
@@ -221,7 +190,7 @@ function App() {
               </p>
             </div>
 
-            <div className="hero-visual" aria-label="Visual interativo da rota de habilitação">
+            <div className="hero-visual" aria-label="Ilustração da rota de habilitação">
               <div className="visual-badge visual-badge-top">
                 <span className="badge-icon">✓</span>
                 <span>
@@ -229,7 +198,7 @@ function App() {
                   <small>do primeiro passo à prova</small>
                 </span>
               </div>
-              <div className="road-orbit" style={{ transform: `translate(${(heroPointer.x - 50) * 0.04}px, ${(heroPointer.y - 50) * 0.04}px)` }}>
+              <div className="road-orbit">
                 <div className="orbit-sun" />
                 <div className="orbit-road orbit-road-one" />
                 <div className="orbit-road orbit-road-two" />
@@ -368,14 +337,14 @@ function App() {
             </div>
             <div className="service-grid">
               {services.map((service, index) => (
-                <a className="service-card" href={whatsappLink(service.title.toLowerCase())} target="_blank" rel="noreferrer" key={service.code}>
+                <a className="service-card" href="#rota" onClick={() => setSelectedRoute(service.routeId)} key={service.code}>
                   <div className="service-card-head">
                     <span className={`service-code service-code-${index}`}>{service.code}</span>
                     <span className="service-arrow" aria-hidden="true">↗</span>
                   </div>
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
-                  <span className="service-card-link">Quero saber mais <span aria-hidden="true">→</span></span>
+                  <span className="service-card-link">Ver esta rota <span aria-hidden="true">→</span></span>
                 </a>
               ))}
             </div>
@@ -403,7 +372,6 @@ function App() {
                 <div><span>02</span><strong>Preparação responsável</strong><small>Aprendizado para a prova e para a vida no trânsito.</small></div>
                 <div><span>03</span><strong>Flexibilidade real</strong><small>Mais espaço para encaixar a formação na sua rotina.</small></div>
               </div>
-              <a className="text-link dark-link" href={whatsappLink()} target="_blank" rel="noreferrer">Conversar com a CFC Palmares <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </section>
@@ -447,8 +415,7 @@ function App() {
           </div>
           <div className="footer-column">
             <span className="footer-label">Fale com a gente</span>
-            <a href={whatsappLink()} target="_blank" rel="noreferrer">(81) 99279-9266</a>
-            <a href={whatsappLink()} target="_blank" rel="noreferrer">Enviar uma mensagem ↗</a>
+            <span>(81) 99279-9266</span>
           </div>
           <div className="footer-column">
             <span className="footer-label">Onde estamos</span>
