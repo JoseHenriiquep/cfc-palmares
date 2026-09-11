@@ -1,0 +1,55 @@
+.proof-strip {
+  position: relative;
+  z-index: 2;
+  color: var(--white);
+  background: var(--red);
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 74px;
+  padding: 15px 20px;
+  border-right: 1px solid rgba(255, 254, 250, 0.24);
+  font-size: 0.63rem;
+  line-height: 1.4;
+}
+
+.proof-item:last-child {
+  border-right: 0;
+}
+
+.proof-item strong {
+  display: block;
+  font-size: 0.69rem;
+}
+
+.proof-symbol {
+  color: var(--yellow);
+  font-size: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-item {
+    justify-content: flex-start;
+    min-height: 58px;
+    padding: 13px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 254, 250, 0.2);
+  }
+
+  .proof-item:last-child {
+    border-bottom: 0;
+  }
+}

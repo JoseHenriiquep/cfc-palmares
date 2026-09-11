@@ -1,0 +1,67 @@
+.final-cta {
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+  background: var(--red);
+}
+
+.final-cta-inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 100px;
+  padding-bottom: 110px;
+}
+
+.final-cta .eyebrow {
+  color: var(--yellow);
+}
+
+.final-cta h2 {
+  color: var(--white);
+  font-size: clamp(3.1rem, 6vw, 5.8rem);
+}
+
+.final-cta h2 em {
+  color: var(--yellow);
+}
+
+.final-cta p:not(.eyebrow) {
+  max-width: 470px;
+  margin: 28px 0 32px;
+  color: rgba(255, 254, 250, 0.74);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+.final-cta-shape {
+  position: absolute;
+  border: 1px solid rgba(255, 193, 7, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.final-cta-shape-one {
+  top: -200px;
+  right: -50px;
+  width: 610px;
+  height: 610px;
+}
+
+.final-cta-shape-two {
+  right: 110px;
+  bottom: -220px;
+  width: 480px;
+  height: 480px;
+  border-color: rgba(16, 16, 16, 0.18);
+}
+
+@media (max-width: 760px) {
+  .final-cta-inner {
+    padding-top: 80px;
+    padding-bottom: 85px;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(3.1rem, 16vw, 5.4rem);
+  }
+}
