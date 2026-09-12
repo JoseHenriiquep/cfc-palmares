@@ -6,10 +6,9 @@ function StorySection() {
       <div className="container story-layout">
         <div className="story-image-wrap">
           <img
-            src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=85"
+            src="/cfc_palmares.png"
             alt="Carro percorrendo uma estrada ao pôr do sol"
           />
-          <span className="image-note">Imagem ilustrativa</span>
           <div className="story-stamp"><span>+</span><strong>direção</strong><small>com mais<br />confiança</small></div>
         </div>
         <div className="story-copy">
