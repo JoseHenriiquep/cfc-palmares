@@ -9,8 +9,8 @@ function BenefitsSection() {
         <SectionHeading
           className="benefits-heading"
           number="02"
-          eyebrow="POR QUE PALMARES?"
-          title={<>Benefícios que fazem<br /><em>diferença na rota.</em></>}
+          eyebrow="POR QUE ESCOLHER A CFC PALMARES?"
+          title={<>Benefícios que fazem<br /><em>a diferença para você.</em></>}
           intro="Mais do que ensinar a dirigir, a gente prepara você para tomar decisões com segurança e seguir em frente."
         />
         <div className="benefit-grid">

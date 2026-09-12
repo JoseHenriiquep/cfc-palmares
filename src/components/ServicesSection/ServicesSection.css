@@ -8,7 +8,7 @@
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 13px;
 }
 
@@ -40,6 +40,7 @@
   min-width: 42px;
   height: 42px;
   padding: 0 7px;
+  border: 1px solid var(--ink);
   border-radius: 50%;
   color: var(--ink);
   background: var(--yellow);
@@ -50,6 +51,8 @@
 .service-code-1 { color: var(--white); background: var(--red); }
 .service-code-2 { color: var(--yellow); background: var(--ink); }
 .service-code-3 { color: var(--white); background: var(--red); }
+.service-code-4 { color: var(--yellow); background: var(--ink); }
+.service-code-5 { color: var(--ink); background: var(--yellow); }
 
 .service-arrow {
   color: var(--red);

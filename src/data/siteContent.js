@@ -115,6 +115,18 @@ export const services = [
     text: 'O próximo passo para quem quer avançar profissionalmente.',
     routeId: 'classificacao',
   },
+  {
+    code: 'REN',
+    title: 'Renovação',
+    text: 'Orientação clara para renovar sua CNH e manter tudo em dia.',
+    routeId: 'renovacao',
+  },
+  {
+    code: 'REC',
+    title: 'Reciclagem',
+    text: 'Curso de reciclagem com atendimento acolhedor e suporte em cada etapa.',
+    routeId: 'reciclagem',
+  },
 ]
 
 export const expectations = [
